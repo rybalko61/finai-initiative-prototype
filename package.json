@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "vite outputs --host 127.0.0.1 --port 4173",
-    "build": "vite build outputs --outDir ../dist"
+    "build": "vite build outputs --config vite.config.js --outDir ../dist"
   },
   "dependencies": {
     "@salutejs/sdds-finai": "0.367.0",
