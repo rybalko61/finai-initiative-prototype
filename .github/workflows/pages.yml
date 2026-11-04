@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy FinAI prototype to GitHub Pages
 
 on:
   push:
@@ -27,28 +27,19 @@ jobs:
         uses: pnpm/action-setup@v4
         with:
           version: 11.25.0
-          run_install: false
-      - name: Setup Node.js
+      - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: pnpm
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Build
         run: pnpm build
-      - name: Add presentation
-        run: |
-          mkdir -p dist/presentation
-          cp research/presentation-prototype.html dist/presentation/index.html
-          mkdir -p dist/presentation/notes
-          cp research/speaker-notes.html dist/presentation/notes/index.html
-      - name: Upload artifact
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
