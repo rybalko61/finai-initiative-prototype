@@ -36,6 +36,8 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Build
         run: pnpm build
+      - name: Copy presentation images
+        run: mkdir -p dist/assets && cp outputs/assets/*.png dist/assets/
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
